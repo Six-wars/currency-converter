@@ -6,7 +6,7 @@ if ('serviceWorker' in navigator) {
 	})
 }
 
-var currencies = [];
+var currencies_ids = [];
 fetch('https://free.currencyconverterapi.com/api/v5/currencies')
   .then(function(response) {
     return response.json();
@@ -17,7 +17,7 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
       let currency = currencies[key];
 
       //get all the currency ID's
-      currencies.push(currency['id']);
+      currencies_ids.push(currency['id']);
     }
   });
 
