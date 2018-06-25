@@ -6,18 +6,10 @@ if ('serviceWorker' in navigator) {
 	})
 }
 
-fetch("https://free.currencyconverterapi.com/api/v5/currencies", {
-    cache: 'no-cache', 
-    credentials: 'same-origin', 
-    headers: {
-        'user-agent': 'Mozilla/4.0 MDN Example',
-        'content-type': 'application/json'
-    },
-    method: 'GET',
-    mode: 'cors', 
-    redirect: 'follow',
-    referrer: 'no-referrer',
-    })
-    .then(response => response.json()).then((json) => {
-      	console.log(json)
-	})
+fetch('https://free.currencyconverterapi.com/api/v5/currencies')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    console.log(myJson);
+  });
