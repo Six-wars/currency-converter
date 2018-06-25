@@ -21,4 +21,18 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
     }
   });
 
-console.log(currencies_ids);
+var all_combinations = [];
+
+for (let currency_id of currencies_ids) {
+    for (let index in currencies_ids) {
+        let second_currency = currencies_ids[index];
+        if (second_currency != currency_id) { //avoid comparing with itself
+            let comparison_string = `${currency_id}-${second_currency}`;
+
+            //check if it's already saved
+            if (all_combinations.indexOf(comparison_string) != -1) {
+                all_combinations.push(comparison_string);
+            }
+        }
+    }
+}
