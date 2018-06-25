@@ -19,8 +19,7 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
 
       //get all the currency ID's
       currencies_ids.push(currency['id']);
-      return currencies_ids
-    }
+    } return currencies_ids;
   }).then(function(currencies_ids) {
       for (let currency_id of currencies_ids) {
           for (let index in currencies_ids) {
