@@ -21,4 +21,4 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
     }
   });
 
-console.log(currencies);
+console.log(currencies_ids);
