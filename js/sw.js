@@ -1,11 +1,9 @@
 var cacheName = 'v1';
 var cacheFiles = [
-	'../',
-	'../index.html',
-	'../css/bootstrap.min.css',
-	'../css/style.css',
+	'/css/bootstrap.min.css',
+	'/css/style.css',
+	'/img/bootstrap-solid.svg',
 	'script.js',
-	'../img/bootstrap-solid.svg'
 ]
 
 self.addEventListener('install', function(e) {
