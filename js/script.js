@@ -7,7 +7,6 @@ if ('serviceWorker' in navigator) {
 }
 
 fetch("https://free.currencyconverterapi.com/api/v5/currencies", {
-    body: JSON.stringify({}),
     cache: 'no-cache', 
     credentials: 'same-origin', 
     headers: {
