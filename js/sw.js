@@ -1,6 +1,6 @@
 var cacheName = 'v1';
 var cacheFiles = [
-	'/css/bootstrap.min.css',
+	'/css/bootstrap-4.min.css',
 	'/css/style.css',
 	'/img/bootstrap-solid.svg',
 	'script.js',
