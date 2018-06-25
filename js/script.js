@@ -11,5 +11,8 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
     return response.json();
   })
   .then(function(myJson) {
-    console.log(myJson);
+    let currencies = myJson['results'];
+    for (currency of currencies) {
+      console.log(currency['id']);
+    }
   });
