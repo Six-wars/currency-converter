@@ -26,12 +26,11 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
           for (let index in currencies_ids) {
               let second_currency = currencies_ids[index];
               if (second_currency != currency_id) { //avoid comparing with itself
-                  console.log('Not the same')
                   let comparison_string = `${currency_id}-${second_currency}`;
+                  console.log(comparison_string);
 
                   //check if it's already saved
                   if (all_combinations.indexOf(comparison_string) != -1) {
-                      console.log()
                       all_combinations.push(comparison_string);
                   }
               }
