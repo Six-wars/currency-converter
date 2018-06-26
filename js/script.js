@@ -53,24 +53,7 @@ End Buggy Code */
 
 //Switch to using jQuery
 
-//returns conversion e.g. {ALL_XCD: 0.025028}}
-function getConvRate(comparison) {
-    var result = {}
-    let url = `https://free.currencyconverterapi.com/api/v5/convert?q=${comparison}&compact=y`;
-    fetch(url)
-      .then(response => {
-        return response.json();
-      })
-      .then(myJson => {
-          let value = myJson[comparison]['val'];
-          result[comparison] = value;
-          return result;
-      })
-    return result;
-}
-
 var currencies_ids = [];
-var all_combinations = [];
 $.get("https://free.currencyconverterapi.com/api/v5/currencies", response => {
     let currencies = response['results'];
     for (key in currencies) {
@@ -79,32 +62,13 @@ $.get("https://free.currencyconverterapi.com/api/v5/currencies", response => {
       //get all the currency ID's
       currencies_ids.push(currency['id']);
     }
-
-    currencies_ids.sort();
-    for (currency of currencies_ids) {
-        //add them to the select list of currencies
-        let option_text = `<option value="${currency}">${currency}</option>`;
-        $('#currency1').append(option_text);
-        $('#currency2').append(option_text);
-
-        //and compare it to every element in the list
-        for (let index in currencies_ids) {
-            //get the second currency to compare to, allow comparing with itself e.g. USD_USD 
-            //because site returns expected conversion rate: 1
-            let second_currency = currencies_ids[index];
-            let comparison_string = `${currency}_${second_currency}`;
-
-            //If not found in the list (new comparison) to list
-            if (all_combinations.indexOf(comparison_string) == -1) {
-                all_combinations.push(comparison_string);
-            }
-        }
-    }
-
-    
+ 
 });
 
 //on document ready
 $(document).ready(function() {
-    
+    $('#convert').click(function() {
+        let currency1 = $('#currency1').val();
+        let currency2 = $('#currency2').val();
+    });
 });
