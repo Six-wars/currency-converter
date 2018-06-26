@@ -6,8 +6,11 @@ if ('serviceWorker' in navigator) {
 	})
 }
 
+//variables used inside the fetch requests
 var currencies_ids = [];
 var all_combinations = [];
+var results = {};
+
 fetch('https://free.currencyconverterapi.com/api/v5/currencies')
   .then(response => {
     return response.json();
