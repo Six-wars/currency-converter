@@ -22,9 +22,10 @@ function getConvRate(comparison) {
     return result;
 }
 
-function getCurrencies() {
+function getCurrenciesAndCombinations() {
     //variables used inside the fetch requests
     let currencies_ids = [];
+    let all_combinations = [];
     
     fetch('https://free.currencyconverterapi.com/api/v5/currencies')
       .then(response => {
@@ -39,32 +40,27 @@ function getCurrencies() {
           currencies_ids.push(currency['id']);
         } 
         return currencies_ids;
-      })
+      }).then(currencies_ids => {
+          for (let currency of currencies_ids) {
+              //and compare it to every element in the list
+              for (let index in currencies_ids) {
+                  //get the second currency to compare to, allow comparing with itself e.g. USD_USD 
+                  //because site returns expected conversion rate: 1
+                  let second_currency = currencies_ids[index];
+                  let comparison_string = `${currency}_${second_currency}`;
 
-    return currencies_ids;
+                  //If not found in the list (new comparison) to list
+                  if (all_combinations.indexOf(comparison_string) == -1) {
+                      all_combinations.push(comparison_string);
+                  }
+              }
+          }
+          return all_combinations;
+      });
+
+    return currencies_ids, all_combinations;
 }
 
-function getCombinations(currencies) {
-    let all_combinations = [];
-
-    for (let currency of currencies) {
-        //and compare it to every element in the list
-        for (let index in currencies_ids) {
-            //get the second currency to compare to, allow comparing with itself e.g. USD_USD 
-            //because site returns expected conversion rate: 1
-            let second_currency = currencies_ids[index];
-            let comparison_string = `${currency}_${second_currency}`;
-
-            //If not found in the list (new comparison) to list
-            if (all_combinations.indexOf(comparison_string) == -1) {
-                all_combinations.push(comparison_string);
-            }
-        }
-    }
-    return all_combinations;
-}
-
-const currencies = getCurrencies();
-const comparisons = getCombinations();
+const currencies, comparison = getCurrenciesAndCombinations();
 
       
