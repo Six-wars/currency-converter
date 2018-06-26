@@ -66,13 +66,36 @@ const currencies, comparison = getCurrenciesAndCombinations();
 
 End Buggy Code */
 
+//Switch to using jQuery
+
 var currencies_ids = [];
+var all_combinations = [];
 $.get("https://free.currencyconverterapi.com/api/v5/currencies", response => {
-    let currencies = myJson['results'];
-    for (let key in currencies) {
+    let currencies = response['results'];
+    for (key in currencies) {
       let currency = currencies[key];
 
       //get all the currency ID's
       currencies_ids.push(currency['id']);
     }
+
+    for (currency of currencies_ids) {
+        //and compare it to every element in the list
+        for (let index in currencies_ids) {
+            //get the second currency to compare to, allow comparing with itself e.g. USD_USD 
+            //because site returns expected conversion rate: 1
+            let second_currency = currencies_ids[index];
+            let comparison_string = `${currency}_${second_currency}`;
+
+            //If not found in the list (new comparison) to list
+            if (all_combinations.indexOf(comparison_string) == -1) {
+                all_combinations.push(comparison_string);
+            }
+        }
+    }
+});
+
+//on document ready
+$( document ).ready(function() {
+    console.log(all_combinations);
 });
