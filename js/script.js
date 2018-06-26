@@ -81,6 +81,11 @@ $.get("https://free.currencyconverterapi.com/api/v5/currencies", response => {
     }
 
     for (currency of currencies_ids) {
+        //add them to the select list of currencies
+        let option_text = `<option value="${currency}">${currency}</option>`;
+        $('#currency1').append(option_text);
+        $('#currency2').append(option_text);
+
         //and compare it to every element in the list
         for (let index in currencies_ids) {
             //get the second currency to compare to, allow comparing with itself e.g. USD_USD 
@@ -95,7 +100,7 @@ $.get("https://free.currencyconverterapi.com/api/v5/currencies", response => {
         }
     }
 
-    console.log(all_combinations);
+    
 });
 
 //on document ready
