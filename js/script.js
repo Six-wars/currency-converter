@@ -9,10 +9,10 @@ if ('serviceWorker' in navigator) {
 var currencies_ids = [];
 var all_combinations = [];
 fetch('https://free.currencyconverterapi.com/api/v5/currencies')
-  .then(function(response) {
+  .then(response => {
     return response.json();
   })
-  .then(function(myJson) {
+  .then(myJson => {
     let currencies = myJson['results'];
     for (key in currencies) {
       let currency = currencies[key];
@@ -21,7 +21,7 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
       currencies_ids.push(currency['id']);
     } 
     return currencies_ids;
-  }).then(function(currencies_ids) {
+  }).then(currencies_ids => {
       //loop through each item in the list...
       for (let currency_id of currencies_ids) {
           //and compare it to every element in the list
@@ -37,6 +37,21 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
               }
           }
       }
+      //free version has a limit so need to eventually will need to query without exceeding the limit
+      return all_combinationss.slice(0, 2); 
+  }).then(all_combinations => {
+      for (comparison of all_combinations) {
+          let url = `https://free.currencyconverterapi.com/api/v5/convert?q=${comparison}&compact=y`;
+          fetch(url)
+            .then(response => {
+              return response.json();
+            })
+            .then(myJson => {
+                let value = myJson[comparison]['val'];
+                results[comparison] = value;
+            })
+      }
+      console.log('Complete');
   });
 
       
