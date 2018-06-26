@@ -38,7 +38,7 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
           }
       }
       //free version has a limit so need to eventually will need to query without exceeding the limit
-      return all_combinationss.slice(0, 2); 
+      return all_combinations.slice(0, 2); 
   }).then(all_combinations => {
       for (comparison of all_combinations) {
           let url = `https://free.currencyconverterapi.com/api/v5/convert?q=${comparison}&compact=y`;
