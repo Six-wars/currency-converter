@@ -22,6 +22,7 @@ function getConvRate(comparison) {
     return result;
 }
 
+/* Buggy Code 
 function getCurrenciesAndCombinations() {
     //variables used inside the fetch requests
     let currencies_ids = [];
@@ -63,4 +64,5 @@ function getCurrenciesAndCombinations() {
 
 const currencies, comparison = getCurrenciesAndCombinations();
 
-      
+End Buggy Code */
+
