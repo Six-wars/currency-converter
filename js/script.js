@@ -66,3 +66,13 @@ const currencies, comparison = getCurrenciesAndCombinations();
 
 End Buggy Code */
 
+var currencies_ids = [];
+$.get("https://free.currencyconverterapi.com/api/v5/currencies", response => {
+    let currencies = myJson['results'];
+    for (let key in currencies) {
+      let currency = currencies[key];
+
+      //get all the currency ID's
+      currencies_ids.push(currency['id']);
+    }
+});
