@@ -1,7 +1,7 @@
 if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('js/sw.js').then(function(registration) {
-		console.log('Service Worker Registered')
-	}).catch(function(err) {
+	navigator.serviceWorker.register('js/sw.js').then(registration => {
+		console.log('Service Worker Registered');
+	}).catch(err => {
 		console.log("Service Worker Failed to Register", err);
 	})
 }
