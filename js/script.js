@@ -47,7 +47,8 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
               return response.json();
             })
             .then(myJson => {
-                let value = myJson[comparison]['val'];
+                let value = myJson[comparison];
+                console.log(value)
                 results[comparison] = value;
             })
       }
