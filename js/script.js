@@ -9,7 +9,7 @@ if ('serviceWorker' in navigator) {
 //variables used inside the fetch requests
 var currencies_ids = [];
 var all_combinations = [];
-var results = [];
+var results = {};
 
 fetch('https://free.currencyconverterapi.com/api/v5/currencies')
   .then(response => {
@@ -50,8 +50,8 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
               return response.json();
             })
             .then(myJson => {
-                let value = myJson[comparison];
-                results.push(myJson);
+                let value = myJson[comparison]['val'];
+                results[comparison] = value;
             })
       }
   });
