@@ -43,19 +43,18 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
       //free version has a limit so need to eventually will need to query without exceeding the limit
       return all_combinations.slice(0, 2); 
   }).then(all_combinations => {
-      for (comparison of all_combinations) {
+      for (let comparison of all_combinations) {
           let url = `https://free.currencyconverterapi.com/api/v5/convert?q=${comparison}&compact=y`;
           fetch(url)
             .then(response => {
               return response.json();
             })
             .then(myJson => {
+                console.log(myJson)
                 let value = myJson[comparison];
-                console.log(value)
                 results[comparison] = value;
             })
       }
-      console.log('Complete');
   });
 
       
