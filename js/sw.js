@@ -5,11 +5,11 @@ self.addEventListener('install', function(event) {
 		caches.open('main-cache-v1').then(function(cache) {
 			return cache.addAll(
 					[
-						'../',
+						//'../',
 						'../js/script.js',
-						'../css/style.css',
-						'../css/bootstrap.min.css',
-						'../js/jquery.min.js',
+						//'../css/style.css',
+						//'../css/bootstrap.min.css',
+						//'../js/jquery.min.js',
 						//'../img/bootstrap-solid.svg',
 						//'https://free.currencyconverterapi.com/api/v5/currencies'
 					]
