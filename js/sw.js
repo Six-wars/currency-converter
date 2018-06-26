@@ -11,7 +11,6 @@ self.addEventListener('install', function(event) {
 						'../css/bootstrap.min.css',
 						'../js/jquery.min.js',
 						'../img/bootstrap-solid.svg',
-						'https://free.currencyconverterapi.com/api/v5/currencies'
 					]
 				);
 		})
