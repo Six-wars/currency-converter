@@ -22,18 +22,18 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
     } 
     return currencies_ids;
   }).then(function(currencies_ids) {
-      console.log(currencies_ids);
+      //loop through each item in the list...
       for (let currency_id of currencies_ids) {
+          //and compare it to every element in the list
           for (let index in currencies_ids) {
+              //get the second currency to compare to, allow comparing with itself e.g. USD_USD 
+              //because site returns expected conversion rate: 1
               let second_currency = currencies_ids[index];
-              if (second_currency != currency_id) { //avoid comparing with itself
-                  let comparison_string = `${currency_id}-${second_currency}`;
-                  console.log(comparison_string);
+              let comparison_string = `${currency_id}_${second_currency}`;
 
-                  //check if it's already saved
-                  if (all_combinations.indexOf(comparison_string) != -1) {
-                      all_combinations.push(comparison_string);
-                  }
+              //If not found in the list (new comparison) to list
+              if (all_combinations.indexOf(comparison_string) == -1) {
+                  all_combinations.push(comparison_string);
               }
           }
       }
