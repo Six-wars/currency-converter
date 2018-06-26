@@ -80,6 +80,7 @@ $.get("https://free.currencyconverterapi.com/api/v5/currencies", response => {
       currencies_ids.push(currency['id']);
     }
 
+    currencies_ids.sort();
     for (currency of currencies_ids) {
         //add them to the select list of currencies
         let option_text = `<option value="${currency}">${currency}</option>`;
