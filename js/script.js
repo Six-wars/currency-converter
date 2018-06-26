@@ -6,21 +6,6 @@ if ('serviceWorker' in navigator) {
 	})
 }
 
-//returns conversion e.g. {ALL_XCD: 0.025028}}
-function getConvRate(comparison) {
-    var result = {}
-    let url = `https://free.currencyconverterapi.com/api/v5/convert?q=${comparison}&compact=y`;
-    fetch(url)
-      .then(response => {
-        return response.json();
-      })
-      .then(myJson => {
-          let value = myJson[comparison]['val'];
-          result[comparison] = value;
-          return result;
-      })
-    return result;
-}
 
 /* Buggy Code 
 function getCurrenciesAndCombinations() {
@@ -68,6 +53,22 @@ End Buggy Code */
 
 //Switch to using jQuery
 
+//returns conversion e.g. {ALL_XCD: 0.025028}}
+function getConvRate(comparison) {
+    var result = {}
+    let url = `https://free.currencyconverterapi.com/api/v5/convert?q=${comparison}&compact=y`;
+    fetch(url)
+      .then(response => {
+        return response.json();
+      })
+      .then(myJson => {
+          let value = myJson[comparison]['val'];
+          result[comparison] = value;
+          return result;
+      })
+    return result;
+}
+
 var currencies_ids = [];
 var all_combinations = [];
 $.get("https://free.currencyconverterapi.com/api/v5/currencies", response => {
@@ -93,9 +94,11 @@ $.get("https://free.currencyconverterapi.com/api/v5/currencies", response => {
             }
         }
     }
+
+    console.log(all_combinations);
 });
 
 //on document ready
-$( document ).ready(function() {
-    console.log(all_combinations);
+$(document).ready(function() {
+    
 });
