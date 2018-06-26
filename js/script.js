@@ -50,9 +50,8 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
               return response.json();
             })
             .then(myJson => {
-                console.log(myJson)
                 let value = myJson[comparison];
-                results[comparison] = value;
+                results.push(myJson);
             })
       }
   });
