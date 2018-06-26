@@ -1,4 +1,4 @@
-self.addEventListener('install', event => {
+self.addEventListener('install', function(event) {
 	console.log("[ServiceWorker] Installed")
 
 	event.waitUntil(
@@ -17,11 +17,11 @@ self.addEventListener('install', event => {
 	)
 })
 
-self.addEventListener('activate', event => {
+self.addEventListener('activate', function(event) {
 	console.log("[ServiceWorker] Activated")
 })
 
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', function(event) {
 	event.respondWith(
 
 	);
