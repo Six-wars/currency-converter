@@ -53,20 +53,20 @@ End Buggy Code */
 
 //Switch to using jQuery
 
-var currencies_ids = [];
-$.get("https://free.currencyconverterapi.com/api/v5/currencies", function(response) {
-    let currencies = response['results'];
-    for (key in currencies) {
-      let currency = currencies[key];
-
-      //get all the currency ID's
-      currencies_ids.push(currency['id']);
-    }
- 
-});
-
 //on document ready
 $(document).ready(function() {
+    var currencies_ids = [];
+    $.get("https://free.currencyconverterapi.com/api/v5/currencies", function(response) {
+        let currencies = response['results'];
+        for (key in currencies) {
+          let currency = currencies[key];
+
+          //get all the currency ID's
+          currencies_ids.push(currency['id']);
+        }
+     
+    });
+
     $('#convert').click(function() {
         let currency1 = $('#currency1').val();
         let currency2 = $('#currency2').val();
