@@ -85,9 +85,12 @@ $(document).ready(function() {
         //url https://free.currencyconverterapi.com/api/v5/convert?q=USD_PHP&compact=y
         let url = `https://free.currencyconverterapi.com/api/v5/convert?q=${currency1}_${currency2}&compact=y`;
 
+        $(this).addClass('btn-warning').removeClass('btn-primary');
+        var self = this;
         $.get(url, function(response) {
             let result = response[`${currency1}_${currency2}`]['val'];
             $('#result').text(result);
+            self.removeClass('btn-warning').addClass('btn-primary');
         });
 
     });
