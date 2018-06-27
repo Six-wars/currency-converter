@@ -65,8 +65,8 @@ $(document).ready(function() {
           currencies_ids.push(currency['id']);
         }
 
-        currencies.sort();
-        for (currency of currencies) {
+        currencies_ids.sort();
+        for (currency of currencies_ids) {
             let option = `<option value="${currency}">${currency}</option>`
             $('#currency1').append(option);
             $('#currency2').append(option);
