@@ -54,7 +54,7 @@ End Buggy Code */
 //Switch to using jQuery
 
 var currencies_ids = [];
-$.get("https://free.currencyconverterapi.com/api/v5/currencies", response => {
+$.get("https://free.currencyconverterapi.com/api/v5/currencies", function(response) {
     let currencies = response['results'];
     for (key in currencies) {
       let currency = currencies[key];
@@ -70,5 +70,25 @@ $(document).ready(function() {
     $('#convert').click(function() {
         let currency1 = $('#currency1').val();
         let currency2 = $('#currency2').val();
+
+        const invalid_inputs = ["0", "Select a Currency"];
+
+        if (invalid_inputs.includes(currency1) || invalid_inputs.includes(currency2)) {
+            //display error and break
+            $('#input-error').removeClass('hidden');
+            return null;
+        }
+
+        //hide above error if passed
+        $('#input-error').addClass('hidden');
+
+        //url https://free.currencyconverterapi.com/api/v5/convert?q=USD_PHP&compact=y
+        let url = `https://free.currencyconverterapi.com/api/v5/convert?q=${currency1}_${currency2}&compact=y`;
+
+        $.get(url, function(response) {
+            let result = response[`${currency1}_${currency2}`]['val'];
+            $('#result').text(result);
+        });
+
     });
 });
