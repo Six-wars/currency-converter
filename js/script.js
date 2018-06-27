@@ -64,6 +64,13 @@ $(document).ready(function() {
           //get all the currency ID's
           currencies_ids.push(currency['id']);
         }
+
+        currencies.sort();
+        for (currency of currencies) {
+            let option = `<option value="${currency}">${currency}</option>`
+            $('#currency1').append(option);
+            $('#currency2').append(option);
+        }
      
     });
 
